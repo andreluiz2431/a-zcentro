@@ -1,0 +1,24 @@
+{
+  "main": [
+    { "name": "Início", "url": "/" },
+    { "name": "Sobre", "url": "/about" },
+    { "name": "Produtos", "url": "/elements" },
+    {
+      "name": "Saiba mais",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        { "name": "Contatos", "url": "/contact" },
+        { "name": "Blog", "url": "/blog" },
+        { "name": "Autores", "url": "/authors" },
+        { "name": "Categorias", "url": "/categories" },
+        { "name": "Tags", "url": "/tags" },
+        { "name": "404 Page", "url": "/404" }
+      ]
+    }
+  ],
+  "footer": [
+    { "name": "Elements", "url": "/elements" },
+    { "name": "Privacy Policy", "url": "/privacy-policy" }
+  ]
+}
