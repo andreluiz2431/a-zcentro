@@ -2,7 +2,7 @@
   "main": [
     { "name": "Início", "url": "/" },
     { "name": "Sobre", "url": "/about" },
-    { "name": "Produtos", "url": "/produtos" },
+    { "name": "Produtos", "url": "/products" },
     {
       "name": "Saiba mais",
       "url": "",
@@ -18,7 +18,7 @@
     }
   ],
   "footer": [
-    { "name": "Produtos", "url": "/produtos" },
+    { "name": "Produtos", "url": "/products" },
     { "name": "Privacy Policy", "url": "/privacy-policy" }
   ]
 }

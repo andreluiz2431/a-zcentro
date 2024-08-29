@@ -38,6 +38,19 @@ const authorsCollection = defineCollection({
   }),
 });
 
+
+// Product collection schema
+const productCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    price: z.string().optional(),
+    image: z.string().optional(),
+    description: z.string().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 // Pages collection schema
 const pagesCollection = defineCollection({
   schema: z.object({
@@ -135,6 +148,7 @@ const callToActionSchema = z.object({
 export const collections = {
   blog: blogCollection,
   authors: authorsCollection,
+  product: productCollection,
   pages: pagesCollection,
   contact: contactCollection,
   about: aboutCollection,
