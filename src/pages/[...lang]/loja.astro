@@ -1,0 +1,82 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { getListPage } from "@/lib/contentParser.astro";
+import { getTranslations, supportedLang } from "@/lib/utils/languageParser";
+import PageHeader from "@/partials/PageHeader.astro";
+import { type ContentEntryMap } from "astro:content";
+
+import products from '../../content/loja/products.md';
+import ProductCard from '../../layouts/components/ProductCard.astro';
+
+export function getStaticPaths() {
+  const paths = supportedLang.flatMap((lang) => [
+    { params: { lang: lang || undefined, path: 'loja' } },
+    { params: { lang: lang || undefined, path: undefined } }
+  ]);
+  console.log("Generated Static Paths:", paths);
+  return paths;
+}
+
+const { lang } = Astro.params;
+console.log("Language Parameter:", lang);
+
+console.log(`Idioma atual: ${lang}`); // Log para verificar o valor de `lang`
+
+const loja = await getListPage("loja", lang as keyof ContentEntryMap);
+
+console.log(products);
+
+// Transforme o conteúdo em um array, se necessário
+const productArray = [
+  {
+    title: "Shampoo Vegano",
+    image: "/images/shampoo.jpg",
+    price: "R$ 29,90",
+    link: "/produtos/shampoo-vegano"
+  },
+  {
+    title: "Condicionador Orgânico",
+    image: "/images/condicionador.jpg",
+    price: "R$ 34,90",
+    link: "/produtos/condicionador-organico"
+  },
+  {
+    title: "Creme para Pentear",
+    image: "/images/creme.jpg",
+    price: "R$ 39,90",
+    link: "/produtos/creme-para-pentear"
+  }
+];
+
+console.log(Array.isArray(products)); // Deve retornar true
+
+---
+
+<Base>
+  <PageHeader />
+  <html lang="pt-BR">
+  <head>
+    <title>Loja de Produtos</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <header class="bg-white p-4 shadow">
+      <h1 class="text-2xl font-bold text-center">Loja de Produtos</h1>
+    </header>
+    <main class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {productArray.length > 0 ? (
+        productArray.map((product) => (
+          <ProductCard {...product} />
+        ))
+      ) : (
+        <p>Sem produtos disponíveis</p>
+      )}
+    </main>
+    <footer class="bg-white p-4 text-center mt-8 shadow">
+      <p>&copy; 2024 Loja de Produtos</p>
+    </footer>
+  </body>
+  </html>
+</Base>

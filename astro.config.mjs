@@ -18,6 +18,10 @@ const filteredSupportedLang = supportedLang.filter(
   (lang) => !disabledLanguages.includes(lang),
 );
 
+console.log("Supported Languages:", filteredSupportedLang);
+console.log("Default Language:", default_language);
+
+
 // https://astro.build/config
 export default defineConfig({
   site: config.site.base_url ? config.site.base_url : "http://examplesite.com",
@@ -68,3 +72,4 @@ export default defineConfig({
     extendDefaultPlugins: true,
   },
 });
+
