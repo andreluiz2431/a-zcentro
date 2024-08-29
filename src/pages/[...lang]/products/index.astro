@@ -1,0 +1,44 @@
+---
+import ProductCard from "@/components/ProductCard.astro";
+import Base from "@/layouts/Base.astro";
+import { getListPage, getSinglePage } from "@/lib/contentParser.astro";
+import { supportedLang } from "@/lib/utils/languageParser";
+import PageHeader from "@/partials/PageHeader.astro";
+import { type ContentEntryMap } from "astro:content";
+
+const COLLECTION_FOLDER = "products";
+
+export function getStaticPaths() {
+  const paths = supportedLang.map((lang) => ({
+    params: { lang: lang || undefined },
+  }));
+  return paths;
+}
+
+const { lang } = Astro.params;
+const productIndex = await getListPage(
+  COLLECTION_FOLDER,
+  lang as keyof ContentEntryMap
+);
+const products = await getSinglePage(
+  COLLECTION_FOLDER,
+  lang as keyof ContentEntryMap
+);
+---
+
+<Base title={productIndex[0].data.title}>
+  <PageHeader title={productIndex[0].data.title} />
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        {
+          products.map((product) => (
+            <div class="mb-14 md:col-6 lg:col-4">
+              <ProductCard data={product} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

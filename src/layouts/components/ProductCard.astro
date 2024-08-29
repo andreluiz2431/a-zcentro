@@ -1,22 +1,34 @@
 ---
-export interface Props {
-  title: string;
-  image: string;
-  price: string;
-  link: string;
-}
+import { getLangFromUrl, slugSelector } from "@/lib/utils/languageParser";
+//import { plainify } from "@/lib/utils/textConverter";
+import ImageMod from "./ImageMod.astro";
 
-const { title, image, price, link } = Astro.props;
+const { data } = Astro.props;
+const { title, image, price } = data.data;
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <article class="bg-white rounded-lg shadow-md overflow-hidden">
-  <img src={image} alt={title} class="w-full h-48 object-cover" />
+  {
+    image && (
+      <ImageMod
+        class="w-full h-48 object-cover"
+        src={image}
+        alt={title}
+        width={120}
+        height={120}
+        format="webp"
+      />
+    )
+  }
   <div class="p-4">
-    <h2 class="text-lg font-semibold">{title}</h2>
+    <a href={slugSelector(`/${data.slug}`, lang)}>
+      <h2 class="text-lg font-semibold">{title}</h2>
+    </a>
     <p class="text-gray-600 mt-2">{price}</p>
     <div class="mt-4 flex space-x-2">
-      <a href={link} class="bg-blue-500 text-white px-4 py-2 rounded">Comprar</a>
-      <a href={link} class="bg-gray-300 text-gray-900 px-4 py-2 rounded">Ver Mais</a>
+      <a href='#' class="bg-blue-500 text-white px-4 py-2 rounded">Comprar</a>
+      <a href='#' class="bg-gray-300 text-gray-900 px-4 py-2 rounded">Ver Mais</a>
     </div>
   </div>
 </article>
