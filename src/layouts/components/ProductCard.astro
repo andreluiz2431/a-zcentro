@@ -8,7 +8,7 @@ const { title, image, price } = data.data;
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<article class="bg-white rounded-lg shadow-md overflow-hidden">
+<article class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-darkmode-theme-light">
   {
     image && (
       <ImageMod
