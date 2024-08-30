@@ -15,17 +15,47 @@ if (Astro.cookies.has("__session")) {
 ---
 
 <Layout title="Sign in">
-  <h1>Entrar</h1>
-  <p>Novo aqui? <a href="/register">Crie sua conta</a></p>
-  <form action="/api/auth/signin" method="post">
-    <label for="email" for="email">E-mail</label>
-    <input type="email" name="email" id="email" />
-    <label for="password">Senha</label>
-    <input type="password" name="password" id="password" />
-    <button type="submit">Entrar</button>
-  </form>
-  <button id="google">Entrar com o Google</button>
-</Layout>
+    <section class="section-sm">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto md:col-10 lg:col-6">
+            <h1 class="text-2xl font-bold mb-4 text-center">ENTRAR</h1>
+            
+            <form action="/api/auth/signin" method="post">
+              <div class="mb-6">
+                <label for="email" class="form-label">E-mail<span class="text-red-500">*</span></label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  class="form-input" 
+                  placeholder="seuemail@email.com" 
+                  required 
+                />
+              </div>
+              <div class="mb-6">
+                <label for="password" class="form-label">Senha<span class="text-red-500">*</span></label>
+                <input 
+                  type="password" 
+                  name="password" 
+                  id="password" 
+                  class="form-input" 
+                  placeholder="••••••••" 
+                  required 
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-full">Entrar</button>
+            </form>
+            <button id="google" class="btn btn-secondary mt-4">Entrar com o Google</button>
+            <p class="mb-6">
+                Novo aqui? <a href="/register" class="text-blue-500 hover:underline">Crie sua conta</a>
+              </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Layout>
+  
 <script>
   import {
     getAuth,
