@@ -2,7 +2,10 @@ import type { APIRoute } from "astro";
 import { app } from "../../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 
-export const POST: APIRoute = async ({ request, redirect }) => {
+const db = getFirestore(app);
+const friendsRef = db.collection("friends");
+
+export const POST: APIRoute = async ({ params, redirect, request }) => {
   const formData = await request.formData();
   const name = formData.get("name")?.toString();
   const age = formData.get("age")?.toString();
@@ -13,10 +16,15 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       status: 400,
     });
   }
+
+  if (!params.id) {
+    return new Response("Cannot find friend", {
+      status: 404,
+    });
+  }
+
   try {
-    const db = getFirestore(app);
-    const friendsRef = db.collection("friends");
-    await friendsRef.add({
+    await friendsRef.doc(params.id).update({
       name,
       age: parseInt(age),
       isBestFriend,
@@ -27,4 +35,21 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     });
   }
   return redirect("/dashboardFriends");
+};
+
+export const DELETE: APIRoute = async ({ params, redirect }) => {
+  if (!params.id) {
+    return new Response("Cannot find friend", {
+      status: 404,
+    });
+  }
+
+  try {
+    await friendsRef.doc(params.id).delete();
+  } catch (error) {
+    return new Response("Something went wrong", {
+      status: 500,
+    });
+  }
+  return redirect("/dashboard");
 };
