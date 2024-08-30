@@ -3,15 +3,15 @@ import Layout from "../layouts/Base.astro";
 ---
 
 <Layout title="Register">
-  <h1>Register</h1>
-  <p>Already have an account? <a href="/signin">Sign in</a></p>
+  <h1>Registrar</h1>
+  <p>Já possui uma conta? <a href="/signin">Entrar</a></p>
   <form action="/api/auth/register" method="post">
-    <label for="name">Name</label>
+    <label for="name">Nome</label>
     <input type="text" name="name" id="name" />
-    <label for="email" for="email">Email</label>
+    <label for="email" for="email">E-mail</label>
     <input type="email" name="email" id="email" />
-    <label for="password">Password</label>
+    <label for="password">Senha</label>
     <input type="password" name="password" id="password" />
-    <button type="submit">Login</button>
+    <button type="submit">Cadastrar</button>
   </form>
 </Layout>

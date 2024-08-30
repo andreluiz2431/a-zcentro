@@ -15,16 +15,16 @@ if (Astro.cookies.has("__session")) {
 ---
 
 <Layout title="Sign in">
-  <h1>Sign in</h1>
-  <p>New here? <a href="/register">Create an account</a></p>
+  <h1>Entrar</h1>
+  <p>Novo aqui? <a href="/register">Crie sua conta</a></p>
   <form action="/api/auth/signin" method="post">
-    <label for="email" for="email">Email</label>
+    <label for="email" for="email">E-mail</label>
     <input type="email" name="email" id="email" />
-    <label for="password">Password</label>
+    <label for="password">Senha</label>
     <input type="password" name="password" id="password" />
-    <button type="submit">Login</button>
+    <button type="submit">Entrar</button>
   </form>
-  <button id="google">Sign in with Google</button>
+  <button id="google">Entrar com o Google</button>
 </Layout>
 <script>
   import {
