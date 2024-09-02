@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Base.astro";
 import { app } from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
-import { IoArrowBack } from 'react-icons/io5';
+import { IoArrowBack } from "react-icons/io5";
 import ImageMod from "../../layouts/components/ImageMod.astro";
 
 interface Product {
@@ -28,7 +28,7 @@ if (!productSnapshot.exists) {
 
 const product = productSnapshot.data() as Product;
 
-const {title, image, price} = product;
+const { title, image, price } = product;
 ---
 
 <Layout title={title}>
@@ -40,11 +40,13 @@ const {title, image, price} = product;
           class="flex items-center text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300"
         >
           <IoArrowBack />
-          Voltar a lista de amigos
+          Voltar a lista de produtos
         </a>
       </div>
       <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{title}</h1>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          {title}
+        </h1>
         {
           image && (
             <ImageMod
@@ -58,7 +60,8 @@ const {title, image, price} = product;
           )
         }
         <p class="text-lg text-gray-700 dark:text-gray-300">
-          <strong>Valor:</strong> {price}
+          <strong>Valor:</strong>
+          {price}
         </p>
       </div>
     </div>
