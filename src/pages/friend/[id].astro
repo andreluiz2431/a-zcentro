@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Base.astro";
 import { app } from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
+import { IoArrowBack } from 'react-icons/io5';
 
 interface Friend {
   name: string;
@@ -27,7 +28,26 @@ const friend = friendSnapshot.data() as Friend;
 ---
 
 <Layout title={friend.name}>
-  <h1>{friend.name}</h1>
-  <p>Age: {friend.age}</p>
-  <p>Is best friend: {friend.isBestFriend ? "Yes" : "No"}</p>
+  <section class="section-sm">
+    <div class="container">
+      <div class="flex items-center mb-6">
+        <a
+          href="/dashboardFriends"
+          class="flex items-center text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300"
+        >
+          <IoArrowBack />
+          Voltar a lista de amigos
+        </a>
+      </div>
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{friend.name}</h1>
+        <p class="text-lg text-gray-700 dark:text-gray-300 mb-2">
+          <strong>Idade:</strong> {friend.age}
+        </p>
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          <strong>É melhor amigo:</strong> {friend.isBestFriend ? "Sim" : "Não"}
+        </p>
+      </div>
+    </div>
+  </section>
 </Layout>
