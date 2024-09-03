@@ -1,4 +1,4 @@
-# Plano de Banco de Dados para Loja com Interação de Usuários e Sistema de Chat
+# Plano de Banco de Dados para Loja
 
 ## Estrutura das Tabelas
 
