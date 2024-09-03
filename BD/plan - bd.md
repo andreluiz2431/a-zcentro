@@ -128,6 +128,13 @@ Esse plano cobre a estrutura completa do banco de dados, incluindo todas as func
 
 Diagrama de Relacionamentos Atualizado
 
+Usuários mantém seu relacionamento com Pedidos.
+Pedidos mantém seu relacionamento com Itens_Pedido.
+Itens_Pedido mantém seu relacionamento com Produtos.
+Notícias é uma tabela independente para gerenciar as notícias da loja.
+Promoções podem ter relacionamento com Produtos para vincular promoções específicas.
+Listas_Preco define os diferentes tipos de listas de preço disponíveis no sistema.
+Precificacoes relaciona Produtos com Listas_Preco e define o preço específico em cada lista.
 Usuarios se relaciona com Carrinhos, Comentarios, Likes, Chats e Mensagens_Chat.
 Carrinhos e Itens_Carrinho mantêm seus relacionamentos existentes.
 Produtos podem receber Comentarios e se relacionar com Precificacoes.
