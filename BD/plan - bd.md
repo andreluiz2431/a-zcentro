@@ -5,10 +5,9 @@
 ### 1. Tabela: `Usuarios`
 - **id_usuario** (PK): INT - Identificador único do usuário.
 - **nome**: VARCHAR(255) - Nome completo do usuário.
-- **email**: VARCHAR(255) - E-mail do usuário.
-- **senha**: VARCHAR(255) - Senha criptografada do usuário.
 - **tipo**: ENUM('cliente', 'vendedor', 'admin') - Tipo de usuário.
 - **data_criacao**: DATETIME - Data de criação do usuário.
+- **cpf_cnpj**: VARCHAR(255) - CPF ou CNPJ do usuário
 
 ### 2. Tabela: `Produtos`
 - **id_produto** (PK): INT - Identificador único do produto.
