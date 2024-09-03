@@ -1,0 +1,40 @@
+---
+import { app } from "../../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+import Layout from "../../layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import ProductCard from "@/components/ProductCard.astro";
+import { IoPencil, IoAdd } from "react-icons/io5";
+
+interface Product {
+  id: string;
+  title: string;
+  price: string;
+  image: string;
+}
+
+const db = getFirestore(app);
+const productsRef = db.collection("product");
+const productsSnapshot = await productsRef.get();
+const products = productsSnapshot.docs.map((doc) => ({
+  id: doc.id,
+  ...doc.data(),
+})) as Product[];
+---
+
+<Layout title="products">
+  <PageHeader title='Products' />
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        {
+          products.map((product) => (
+            <div class="mb-14 md:col-6 lg:col-4">
+              <ProductCard data={product} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

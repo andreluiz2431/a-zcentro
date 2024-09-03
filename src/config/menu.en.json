@@ -13,7 +13,9 @@
         { "name": "Autores", "url": "/authors" },
         { "name": "Categorias", "url": "/categories" },
         { "name": "Tags", "url": "/tags" },
-        { "name": "404 Page", "url": "/404" }
+        { "name": "404 Page", "url": "/404" },
+        { "name": "Base CRUD - friends", "url": "/dashboardFriends" },
+        { "name": "CRUD - products", "url": "/products" }
       ]
     }
   ],

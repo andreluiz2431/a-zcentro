@@ -7,7 +7,7 @@ banner:
   button:
     enable: true
     label: "Explore os Produtos"
-    link: "/produtos"
+    link: "/products"
 
 # Features
 features:

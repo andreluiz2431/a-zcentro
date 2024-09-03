@@ -6,5 +6,5 @@ description: "Descubra a linha de produtos veganos da De Sirius e experimente um
 button:
   enable: true
   label: "Explore os Produtos"
-  link: "/produtos"
+  link: "/products"
 ---

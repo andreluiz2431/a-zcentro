@@ -2,6 +2,7 @@
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Base.astro";
+import { getFirestore } from "firebase-admin/firestore";
 
 const auth = getAuth(app);
 
@@ -16,25 +17,51 @@ const user = await auth.getUser(decodedCookie.uid);
 if (!user) {
   return Astro.redirect("/signin");
 }
----
 
-<Layout title="dashboard">
-    <section class="section-sm">
-      <div class="container">
-        <div class="row">
-          <div class="mx-auto md:col-10 lg:col-6 text-center">
-            <h1 class="text-3xl font-bold mb-4">Bem-vindo, {user.displayName}!</h1>
-            <p class="mb-6 text-lg">Bom ver você aqui</p>
-            <form action="/api/auth/signout" method="post">
-              <button 
-                type="submit" 
-                class="btn btn-primary w-full md:w-auto">
-                Sair
-              </button>
-            </form>
+interface Usuario {
+  uid: string;
+  nome: string;
+  data_criacao: Timestamp;
+  tipo: string;
+  cpf_cnpj: string;
+}
+
+const db = getFirestore(app);
+const usuariosRef = db.collection("Usuarios");
+
+// Fetch only the document of the logged-in user using their uid
+const userDoc = await usuariosRef.doc(decodedCookie.uid).get();
+
+if (!userDoc.exists) {
+  console.error("No user data found in Firestore for this uid");
+  return Astro.redirect("/signin");
+}
+
+const usuario = userDoc.data() as Usuario;
+
+// Convert Firestore Timestamp to JavaScript Date
+const dataCriacaoDate = usuario.data_criacao.toDate();
+---
+    <Layout title="dashboard">
+      <section class="section-sm">
+        <div class="container">
+          <div class="row">
+            <div class="mx-auto md:col-10 lg:col-6 text-center">
+              <h1 class="text-3xl font-bold mb-4">Bem-vindo, {user.displayName}!</h1>
+              <p class="mb-6 text-lg">Bom ver você aqui, {usuario.nome}</p>
+              <p class="mb-6 text-lg">Seu tipo de conta é: {usuario.tipo}</p>
+              <p class="mb-6 text-lg">CPF/CNPJ: {usuario.cpf_cnpj}</p>
+              <p class="mb-6 text-lg">Conta criada em: {dataCriacaoDate.toLocaleDateString()}</p>
+              <form action="/api/auth/signout" method="post">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary w-full md:w-auto">
+                  Sair
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </Layout>
-  
+      </section>
+    </Layout>
+
