@@ -1,15 +1,15 @@
 {
   "site": {
-    "title": "Astroplate",
+    "title": "A&Z Centro de Beleza e Bem-estar",
     "base_url": "https://astroplate.netlify.app",
     "base_path": "/",
     "trailing_slash": false,
-    "favicon": "/images/favicon.png",
+    "favicon": "/images/logo.png",
     "logo": "/images/logo.png",
     "logo_darkmode": "/images/logo-darkmode.png",
     "logo_width": "80",
     "logo_height": "80",
-    "logo_text": "Astroplate"
+    "logo_text": "A&Z"
   },
 
   "settings": {
