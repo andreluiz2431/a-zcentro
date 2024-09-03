@@ -125,33 +125,33 @@
 Esse plano cobre a estrutura completa do banco de dados, incluindo todas as funcionalidades de interação com usuários, comentários, likes, respostas, e um sistema de chat para comunicação entre vendedores e clientes.
 
 
-Diagrama de Relacionamentos Atualizado
+## Diagrama de Relacionamentos Atualizado
 
-Usuários mantém seu relacionamento com Pedidos.
-Pedidos mantém seu relacionamento com Itens_Pedido.
-Itens_Pedido mantém seu relacionamento com Produtos.
-Notícias é uma tabela independente para gerenciar as notícias da loja.
-Promoções podem ter relacionamento com Produtos para vincular promoções específicas.
-Listas_Preco define os diferentes tipos de listas de preço disponíveis no sistema.
-Precificacoes relaciona Produtos com Listas_Preco e define o preço específico em cada lista.
-Usuarios se relaciona com Carrinhos, Comentarios, Likes, Chats e Mensagens_Chat.
-Carrinhos e Itens_Carrinho mantêm seus relacionamentos existentes.
-Produtos podem receber Comentarios e se relacionar com Precificacoes.
-Noticias e Promocoes podem receber Comentarios.
-Comentarios podem se relacionar com outros Comentarios para permitir respostas.
-Likes se relacionam com Comentarios para rastrear curtidas.
-Chats conectam Usuarios do tipo cliente e vendedor, e Mensagens_Chat gerencia as trocas de mensagens dentro de um chat.
+- Usuários mantém seu relacionamento com Pedidos.
+- Pedidos mantém seu relacionamento com Itens_Pedido.
+- Itens_Pedido mantém seu relacionamento com Produtos.
+- Notícias é uma tabela independente para gerenciar as notícias da loja.
+- Promoções podem ter relacionamento com Produtos para vincular promoções específicas.
+- Listas_Preco define os diferentes tipos de listas de preço disponíveis no sistema.
+- Precificacoes relaciona Produtos com Listas_Preco e define o preço específico em cada lista.
+- Usuarios se relaciona com Carrinhos, Comentarios, Likes, Chats e Mensagens_Chat.
+- Carrinhos e Itens_Carrinho mantêm seus relacionamentos existentes.
+- Produtos podem receber Comentarios e se relacionar com Precificacoes.
+- Noticias e Promocoes podem receber Comentarios.
+- Comentarios podem se relacionar com outros Comentarios para permitir respostas.
+- Likes se relacionam com Comentarios para rastrear curtidas.
+- Chats conectam Usuarios do tipo cliente e vendedor, e Mensagens_Chat gerencia as trocas de mensagens dentro de um chat.
 
 
-Explicações Adicionais
+## Explicações Adicionais
 
-A tabela Notícias gerencia as informações relacionadas a artigos e atualizações que a loja deseja compartilhar com seus usuários.
-A tabela Promoções permite a criação e gerenciamento de ofertas, com a possibilidade de associá-las a produtos específicos ou aplicar de forma geral.
-A tabela Listas_Preco permite definir diferentes tipos de preços, como preços para clientes finais, empresas, ou preços de combinação (kits).
-A tabela Precificacoes faz o vínculo entre produtos e listas de preço, especificando o valor correspondente a cada contexto.
-A tabela Carrinhos gerencia os carrinhos de compras dos usuários, com um status para indicar se o carrinho está ativo, abandonado ou foi concluído (após a finalização do pedido).
-A tabela Itens_Carrinho armazena os produtos adicionados ao carrinho, juntamente com a quantidade e o preço unitário no momento da adição.
-Esse modelo permite flexibilidade para gerenciar o carrinho de compras de cada usuário e fazer a transição de itens de carrinho para itens de pedido na finalização da compra.
-Comentarios gerenciam todas as interações dos usuários com produtos, promoções e notícias, suportando também respostas.
-Likes permite aos usuários curtirem comentários.
-Chats e Mensagens_Chat gerenciam a comunicação direta entre clientes e vendedores, oferecendo um sistema de chat.
+- A tabela Notícias gerencia as informações relacionadas a artigos e atualizações que a loja deseja compartilhar com seus usuários.
+- A tabela Promoções permite a criação e gerenciamento de ofertas, com a possibilidade de associá-las a produtos específicos ou aplicar de forma geral.
+- A tabela Listas_Preco permite definir diferentes tipos de preços, como preços para clientes finais, empresas, ou preços de combinação (kits).
+- A tabela Precificacoes faz o vínculo entre produtos e listas de preço, especificando o valor correspondente a cada contexto.
+- A tabela Carrinhos gerencia os carrinhos de compras dos usuários, com um status para indicar se o carrinho está ativo, abandonado ou foi concluído (após a finalização do pedido).
+- A tabela Itens_Carrinho armazena os produtos adicionados ao carrinho, juntamente com a quantidade e o preço unitário no momento da adição.
+- Esse modelo permite flexibilidade para gerenciar o carrinho de compras de cada usuário e fazer a transição de itens de carrinho para itens de pedido na finalização da compra.
+- Comentarios gerenciam todas as interações dos usuários com produtos, promoções e notícias, suportando também respostas.
+- Likes permite aos usuários curtirem comentários.
+- Chats e Mensagens_Chat gerenciam a comunicação direta entre clientes e vendedores, oferecendo um sistema de chat.
