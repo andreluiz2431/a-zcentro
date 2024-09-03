@@ -38,6 +38,10 @@ if (!userDoc.exists) {
 }
 
 const usuario = userDoc.data() as Usuario;
+const {nome, tipo, cpf_cnpj} = usuario;
+
+// formatar cpf_cnpj se for 11 caracteres 000.000.000-02, se for 14 caracteres 00.000.000/0000-00
+const cpf_cnpjFormatado = (cpf_cnpj).length === 11 ? cpf_cnpj.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4") : cpf_cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
 
 // Convert Firestore Timestamp to JavaScript Date
 const dataCriacaoDate = usuario.data_criacao.toDate();
@@ -48,9 +52,9 @@ const dataCriacaoDate = usuario.data_criacao.toDate();
           <div class="row">
             <div class="mx-auto md:col-10 lg:col-6 text-center">
               <h1 class="text-3xl font-bold mb-4">Bem-vindo, {user.displayName}!</h1>
-              <p class="mb-6 text-lg">Bom ver você aqui, {usuario.nome}</p>
-              <p class="mb-6 text-lg">Seu tipo de conta é: {usuario.tipo}</p>
-              <p class="mb-6 text-lg">CPF/CNPJ: {usuario.cpf_cnpj}</p>
+              <p class="mb-6 text-lg">Bom ver você aqui, {nome}</p>
+              <p class="mb-6 text-lg">Seu tipo de conta é: {tipo}</p>
+              <p class="mb-6 text-lg">CPF/CNPJ: {cpf_cnpjFormatado}</p>
               <p class="mb-6 text-lg">Conta criada em: {dataCriacaoDate.toLocaleDateString()}</p>
               <form action="/api/auth/signout" method="post">
                 <button 
