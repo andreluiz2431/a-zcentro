@@ -3,6 +3,8 @@ import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Base.astro";
 import { getFirestore } from "firebase-admin/firestore";
+import NewsData from "@/partials/NewsData.astro";
+import PromoData from "@/partials/PromoData.astro";
 
 const auth = getAuth(app);
 
@@ -47,18 +49,33 @@ const cpf_cnpjFormatado = (cpf_cnpj).length === 11 ? cpf_cnpj.replace(/(\d{3})(\
 const dataCriacaoDate = usuario.data_criacao.toDate();
 
 const promocoesRef = db.collection("Promocoes");
-const promocoes = await promocoesRef.get();
-const promocaoAleatoria = promocoes.docs[Math.floor(Math.random() * promocoes.docs.length)].data();
+const promocoesSnapshot = await promocoesRef.get();
+const promocoes = promocoesSnapshot.docs.map((doc) => doc.data());
+
+const produtosRef = db.collection("Produtos");
+const produtosSnapshot = await produtosRef.get();
+const produtos = produtosSnapshot.docs.map((doc) => doc.data());
+
+// adicionar imgem_url de produtos para o item produto em promocoes
+const adicionarImagem = (promocao: any) => {
+  const imagem = produtos.find((item: any) => item.uid === promocao.produto);
+  promocao.imagem_url = imagem?.imagem_url;
+  return promocao;
+}
+
+const promocoesComImagem = promocoes.map(adicionarImagem);
 
 const noticiasRef = db.collection("Noticias");
-const noticias = await noticiasRef.get();
-const noticiaAleatoria = noticias.docs[Math.floor(Math.random() * noticias.docs.length)].data();
+const noticiasSnapshot = await noticiasRef.get();
+const noticias = noticiasSnapshot.docs.map((doc) => doc.data());
+
 ---
-<Layout title="dashboard">
+<Layout title="Dashboard">
+  <!-- Seção de Perfil -->
   <section class="section-sm">
     <div class="container">
       <div class="row">
-            <div class="mx-auto md:col-10 lg:col-6 text-center">
+        <div class="mx-auto md:col-10 lg:col-6 text-center">
           <h1 class="text-3xl font-bold mb-4">Bem-vindo, {user.displayName}!</h1>
           <p class="mb-6 text-lg">Bom ver você aqui, {nome}</p>
           <p class="mb-6 text-lg">Seu tipo de conta é: {tipo}</p>
@@ -72,24 +89,12 @@ const noticiaAleatoria = noticias.docs[Math.floor(Math.random() * noticias.docs.
             </button>
           </form>
         </div>
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card">
-                <h2 class="card-title">{noticiaAleatoria.titulo}</h2>
-                <p class="card-text">{noticiaAleatoria.conteudo}</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card">
-                <h2 class="card-title">{promocaoAleatoria.titulo}</h2>
-                <p class="card-text">{promocaoAleatoria.descricao}</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
-</Layout>
 
+<!-- Seção de Notícias -->
+<NewsData newsData={noticias}></NewsData>
+<!-- Seção de Promoções -->
+<PromoData promoData={promocoesComImagem}></PromoData>
+</Layout>
