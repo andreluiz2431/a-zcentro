@@ -45,27 +45,51 @@ const cpf_cnpjFormatado = (cpf_cnpj).length === 11 ? cpf_cnpj.replace(/(\d{3})(\
 
 // Convert Firestore Timestamp to JavaScript Date
 const dataCriacaoDate = usuario.data_criacao.toDate();
+
+const promocoesRef = db.collection("Promocoes");
+const promocoes = await promocoesRef.get();
+const promocaoAleatoria = promocoes.docs[Math.floor(Math.random() * promocoes.docs.length)].data();
+
+const noticiasRef = db.collection("Noticias");
+const noticias = await noticiasRef.get();
+const noticiaAleatoria = noticias.docs[Math.floor(Math.random() * noticias.docs.length)].data();
 ---
-    <Layout title="dashboard">
-      <section class="section-sm">
-        <div class="container">
-          <div class="row">
+<Layout title="dashboard">
+  <section class="section-sm">
+    <div class="container">
+      <div class="row">
             <div class="mx-auto md:col-10 lg:col-6 text-center">
-              <h1 class="text-3xl font-bold mb-4">Bem-vindo, {user.displayName}!</h1>
-              <p class="mb-6 text-lg">Bom ver você aqui, {nome}</p>
-              <p class="mb-6 text-lg">Seu tipo de conta é: {tipo}</p>
-              <p class="mb-6 text-lg">CPF/CNPJ: {cpf_cnpjFormatado}</p>
-              <p class="mb-6 text-lg">Conta criada em: {dataCriacaoDate.toLocaleDateString()}</p>
-              <form action="/api/auth/signout" method="post">
-                <button 
-                  type="submit" 
-                  class="btn btn-primary w-full md:w-auto">
-                  Sair
-                </button>
-              </form>
+          <h1 class="text-3xl font-bold mb-4">Bem-vindo, {user.displayName}!</h1>
+          <p class="mb-6 text-lg">Bom ver você aqui, {nome}</p>
+          <p class="mb-6 text-lg">Seu tipo de conta é: {tipo}</p>
+          <p class="mb-6 text-lg">CPF/CNPJ: {cpf_cnpjFormatado}</p>
+          <p class="mb-6 text-lg">Conta criada em: {dataCriacaoDate.toLocaleDateString()}</p>
+          <form action="/api/auth/signout" method="post">
+            <button 
+              type="submit" 
+              class="btn btn-primary w-full md:w-auto">
+              Sair
+            </button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <h2 class="card-title">{noticiaAleatoria.titulo}</h2>
+                <p class="card-text">{noticiaAleatoria.conteudo}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <h2 class="card-title">{promocaoAleatoria.titulo}</h2>
+                <p class="card-text">{promocaoAleatoria.descricao}</p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </Layout>
+      </div>
+    </div>
+  </section>
+</Layout>
 
