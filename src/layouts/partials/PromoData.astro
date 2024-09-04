@@ -9,7 +9,7 @@ interface PromoData {
   data_inicio: string;
   data_fim: string;
   desconto: string;
-  imgem_url: string;
+  imagem_url: string;
 }
 
 const { promoData } = Astro.props;
@@ -45,8 +45,8 @@ console.log('chegou: '+promoData[0].imagem_url);
                             height={50}
                             width={50}
                             class="rounded-full"
-                            src={`/images/${promo.imgem_url}`}
-                            alt={promo.imgem_url}
+                            src={`/images/${promo.imagem_url}`}
+                            alt={promo.imagem_url}
                             format="webp"
                           />
                         </div>
