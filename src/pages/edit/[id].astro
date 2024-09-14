@@ -1,8 +1,9 @@
 ---
 import Layout from "../../layouts/Base.astro";
-import { app } from "../../firebase/server";
-import { getFirestore } from "firebase-admin/firestore";
-import { IoPencil, IoTrash, IoArrowBack } from 'react-icons/io5';
+//import { app } from "../../firebase/server";
+//import { getFirestore } from "firebase-admin/firestore";
+import { getFriendById } from "../../firebase/firestore";
+import { IoPencil, IoTrash, IoArrowBack } from "react-icons/io5";
 
 interface Friend {
   name: string;
@@ -16,9 +17,10 @@ if (!id) {
   return Astro.redirect("/404");
 }
 
-const db = getFirestore(app);
-const friendsRef = db.collection("friends");
-const friendSnapshot = await friendsRef.doc(id).get();
+//const db = getFirestore(app);
+//const friendsRef = db.collection("friends");
+//const friendSnapshot = await friendsRef.doc(id).get();
+const friendSnapshot = await getFriendById(id);
 
 if (!friendSnapshot.exists) {
   return Astro.redirect("/404");
@@ -45,9 +47,17 @@ const friend = friendSnapshot.data() as Friend;
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
         Aqui você pode editar ou excluir um amigo.
       </p>
-      <form method="post" action={`/api/friends/${id}`} class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+      <form
+        method="post"
+        action={`/api/friends/${id}`}
+        class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6"
+      >
         <div class="mb-4">
-          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nome</label>
+          <label
+            for="name"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Nome</label
+          >
           <input
             type="text"
             id="name"
@@ -57,7 +67,11 @@ const friend = friendSnapshot.data() as Friend;
           />
         </div>
         <div class="mb-4">
-          <label for="age" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Idade</label>
+          <label
+            for="age"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Idade</label
+          >
           <input
             type="number"
             id="age"
@@ -74,7 +88,11 @@ const friend = friendSnapshot.data() as Friend;
             checked={friend.isBestFriend}
             class="h-4 w-4 text-blue-600 dark:text-blue-400 border-gray-300 dark:border-gray-600 rounded"
           />
-          <label for="isBestFriend" class="ml-2 text-sm text-gray-700 dark:text-gray-300">É melhor amigo?</label>
+          <label
+            for="isBestFriend"
+            class="ml-2 text-sm text-gray-700 dark:text-gray-300"
+            >É melhor amigo?</label
+          >
         </div>
         <button
           type="submit"
@@ -89,7 +107,7 @@ const friend = friendSnapshot.data() as Friend;
         id="delete-document"
         class="mt-4 bg-red-500 dark:bg-red-600 text-white dark:text-gray-900 px-4 py-2 rounded-lg hover:bg-red-600 dark:hover:bg-red-500 transition-colors duration-300 flex items-center"
       >
-        <IoTrash/>
+        <IoTrash />
         Excluir
       </button>
     </div>
