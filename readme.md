@@ -66,9 +66,9 @@
 
 ### 📦 Dependencies
 
-- astro v4.12+
-- node v20.10+
-- npm v10.2+
+- astro v4.15.2+
+- node v18.20.4+
+- npm v10.8.3+
 - tailwind v3.4+
 
 ### 👉 Install Dependencies
