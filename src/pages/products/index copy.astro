@@ -1,7 +1,10 @@
 ---
+import { app } from "../../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
 import Layout from "../../layouts/Base.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import ProductCard from "@/components/ProductCard.astro";
+import { IoPencil, IoAdd } from "react-icons/io5";
 
 interface Product {
   id: string;
@@ -10,16 +13,12 @@ interface Product {
   image: string;
 }
 
-// Faz a requisição para a rota API criada
-const response = await fetch('/api/products');
-const data = await response.json();
-
-// Mapeia os dados do Bling para o formato esperado pelo frontend
-const products = data.retorno.produtos.map((item) => ({
-  id: item.produto.codigo,
-  title: item.produto.descricao,
-  price: item.produto.preco,
-  image: item.produto.urlImagem || '' // Verifique o campo correto da imagem
+const db = getFirestore(app);
+const productsRef = db.collection("product");
+const productsSnapshot = await productsRef.get();
+const products = productsSnapshot.docs.map((doc) => ({
+  id: doc.id,
+  ...doc.data(),
 })) as Product[];
 ---
 
