@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     }
 
     // Envia o feedback para o bot do Telegram
-    const bot = new TelegramBot(import.meta.env.TELEGRAM_BOT_TOKEN, { polling: true });
+    const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
     
     const chatId = import.meta.env.CHAT_ID;
     const text = `Novo feedback recebido de ${user}:\n\n${message}`;
