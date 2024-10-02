@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET: APIRoute = async ({ redirect }) => {
   try {
     const response = await axios.get(
-      `https://bling.com.br/Api/v2/produtos/json/`,
+      `https://bling.com.br/Api/v3/produtos/json/`,
       {
         params: {
           apikey: import.meta.env.BLING_API_KEY,

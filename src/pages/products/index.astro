@@ -12,6 +12,7 @@ interface Product {
 
 // Faz a requisição para a rota API criada
 const response = await fetch('/api/products');
+console.log(response);
 const data = await response.json();
 
 // Mapeia os dados do Bling para o formato esperado pelo frontend
