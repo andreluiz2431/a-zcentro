@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const name = formData.get("name")?.toString();
   const type = 'cliente';
   const cpf_cnpj = formData.get("cpf_cnpj")?.toString();
-  const data_criacao = new Date(); // Use Date object instead of timestamp
+  const data_criacao = new Date(); // Use Date object instead of timestamp.
 
   if (!email || !password || !name || !type || !cpf_cnpj) {
     return new Response("Missing form data", { status: 400 });
