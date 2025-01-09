@@ -1,10 +1,10 @@
 ---
 enable: true
-title: "Pronto para transformar sua rotina de beleza com A&Z Centro de Beleza e Bem-estar?"
-image: "/images/call-to-action-de-sirius.png"
-description: "Descubra a linha de produtos veganos da De Sirius e experimente uma nova forma de cuidar do seu cabelo e pele com ingredientes naturais e sustentáveis."
+title: "Pronto para revolucionar o atendimento ao cliente com a FlowBots?"
+image: "/images/call-to-action-flowbots.png"
+description: "Descubra como nossos bots para WhatsApp, integrações com IA e dashboards analíticos podem transformar a forma como você se conecta com seus clientes. Automatize, personalize e eleve o nível do seu atendimento."
 button:
   enable: true
-  label: "Explore os Produtos"
+  label: "Saiba Mais"
   link: "/products"
 ---

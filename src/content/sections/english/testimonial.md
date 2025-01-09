@@ -1,27 +1,27 @@
 ---
 enable: true
-title: "O Que Nossos Clientes Dizem Sobre De Sirius"
-description: "Não precisa acreditar só na nossa palavra - veja o que nossos clientes satisfeitos têm a dizer! Confira alguns depoimentos abaixo para saber mais sobre a experiência deles com os produtos veganos da De Sirius."
+title: "O Que Nossos Clientes Dizem Sobre a FlowBots"
+description: "Não precisa acreditar só na nossa palavra - veja o que nossos clientes satisfeitos têm a dizer! Confira alguns depoimentos abaixo para saber mais sobre a experiência deles com nossas soluções de automatização de atendimento ao cliente."
 
 # Testimonials
 testimonials:
   - name: "Ana Souza"
     designation: "Blogueira de Beleza"
     avatar: "/images/avatar-ana.png"
-    content: "Os produtos da De Sirius transformaram a minha rotina de cuidados com o cabelo! A qualidade é excepcional e o fato de serem veganos é um grande bônus."
+    content: "Os serviços da FlowBots transformaram nossa comunicação com os clientes! A automatização de mensagens e a integração com IA fizeram toda a diferença no nosso negócio."
 
   - name: "Carlos Lima"
     designation: "Estilista"
     avatar: "/images/avatar-carlos.png"
-    content: "A De Sirius oferece uma linha de produtos que não só cuida da beleza, mas também do meio ambiente. Estou impressionado com os resultados e a responsabilidade ambiental."
+    content: "A FlowBots nos ajudou a criar um atendimento ao cliente muito mais eficiente. Os bots personalizados são incríveis e nossos clientes adoraram a novidade."
 
   - name: "Juliana Martins"
     designation: "Consultora de Beleza"
     avatar: "/images/avatar-juliana.png"
-    content: "Amei a experiência com os produtos da De Sirius. São eficazes, com uma fragrância incrível e a certeza de estar usando produtos éticos e sustentáveis."
+    content: "Fiquei impressionada com o impacto da FlowBots no atendimento ao cliente da nossa empresa. A automação economizou tempo e melhorou nossa conexão com os clientes."
 
   - name: "Rodrigo Pereira"
     designation: "Influenciador Digital"
     avatar: "/images/avatar-rodrigo.png"
-    content: "Recomendo os produtos veganos da De Sirius para todos que buscam qualidade e respeito ao meio ambiente. A diferença na textura e na aparência dos meus cabelos é notável."
+    content: "Recomendo os serviços da FlowBots para qualquer negócio que busque inovação e eficiência. As análises dos dashboards nos ajudam a tomar decisões estratégicas rapidamente."
 ---

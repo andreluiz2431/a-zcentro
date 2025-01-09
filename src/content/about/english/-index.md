@@ -1,11 +1,19 @@
 ---
-title: "Sobre a A&Z Centro de Beleza e Bem-estar"
-meta_title: "Sobre a A&Z Centro de Beleza e Bem-estar"
-description: "Conheça a A&Z Centro de Beleza e Bem-estar e descubra como nossos produtos, especialmente da marca De Sirius, podem transformar sua rotina de cuidados com beleza e bem-estar com ingredientes naturais e sustentáveis."
+title: "Sobre a FlowBots"
+meta_title: "Sobre a FlowBots - Automação de Atendimento ao Cliente"
+description: "Conheça a FlowBots, especializada em automatização de atendimento ao cliente. Fornecemos soluções inteligentes com bots para WhatsApp, integração com IA, dashboards analíticos, e muito mais para otimizar o seu negócio."
 image: "/images/avatar.png"
 draft: false
 ---
 
-Na A&Z Centro de Beleza e Bem-estar, nos dedicamos a proporcionar uma experiência única de cuidados com a beleza e o bem-estar. Nosso carro-chefe são os produtos da renomada marca De Sirius, que oferecemos com orgulho. Cada produto é formulado com ingredientes naturais e veganos, assegurando eficácia e respeito pelo meio ambiente.
+Na FlowBots, somos especialistas em transformar o atendimento ao cliente através da automação inteligente. Oferecemos soluções completas, incluindo bots para WhatsApp, integração com inteligência artificial, e dashboards para análise de dados. Nosso objetivo é ajudar empresas a atenderem seus clientes com mais eficiência, personalização e agilidade.
 
-Nosso compromisso é com a qualidade e a sustentabilidade, proporcionando soluções que atendem às suas necessidades de beleza de forma ética e responsável. Descubra como a linha De Sirius pode transformar sua rotina de cuidados pessoais com a excelência que você merece.
+Com tecnologia avançada e foco na experiência do usuário, nossos serviços são projetados para atender às necessidades específicas do seu negócio, promovendo crescimento e eficiência operacional. Descubra como a FlowBots pode simplificar processos e elevar o nível do seu atendimento ao cliente.
+
+**Por que escolher a FlowBots?**
+- Automação de mensagens e configuração de disparadores.
+- Respostas personalizadas com inteligência artificial.
+- Dashboards interativos para monitoramento e análise de dados.
+- Suporte técnico dedicado e soluções personalizadas.
+
+FlowBots: automação inteligente para negócios que buscam inovação e resultados.
